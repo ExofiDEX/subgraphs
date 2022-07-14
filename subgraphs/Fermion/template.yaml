@@ -1,0 +1,28 @@
+specVersion: 0.0.4
+description: Fermion
+repository: https://github.com/ExofiDEX/subgraphs
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum/contract
+    name: Fermion
+    network: {{ network }}
+    source:
+      address: "{{ fermion.address }}"
+      startBlock: {{ fermion.startBlock }}
+      abi: Fermion
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      file: ./src/mappings/Fermion.ts
+      entities:
+        - Transaction
+        - User
+      abis:
+        - name: Fermion
+          file: ./abis/Fermion.json
+      eventHandlers:
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      
