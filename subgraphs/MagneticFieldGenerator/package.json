@@ -1,0 +1,16 @@
+{
+  "name": "MagneticFieldGenerator",
+  "license": "MIT",
+  "scripts": {
+    "codegen": "mustache ../../config/$NETWORK.js template.yaml > subgraph.yaml && graph codegen",
+    "build": "graph build",
+    "deploy:goerli": "graph deploy --node https://api.thegraph.com/deploy/ exofidex/magnetic-field-generator-goerli",
+    "create-local": "graph create --node http://localhost:8020/ ExofiDEX/MagneticFieldGenerator",
+    "remove-local": "graph remove --node http://localhost:8020/ ExofiDEX/MagneticFieldGenerator",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ExofiDEX/MagneticFieldGenerator"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.32.0",
+    "@graphprotocol/graph-ts": "0.27.0"
+  }
+}
