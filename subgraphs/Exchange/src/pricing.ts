@@ -35,7 +35,7 @@ export function getSushiPrice(): BigDecimal {
   return BIG_DECIMAL_ZERO
 }
 
-export function getEthPrice(block: ethereum.Block = null): BigDecimal {
+export function getEthPrice(block: ethereum.Block | null = null): BigDecimal {
   // TODO: We can can get weighted averages, but this will do for now.
   // If block number is less than or equal to the last stablecoin migration (ETH-USDT), use uniswap eth price.
   // After this last migration, we can use sushiswap pricing.

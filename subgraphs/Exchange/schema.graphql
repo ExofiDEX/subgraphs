@@ -388,7 +388,7 @@ type Burn @entity {
   liquidity: BigDecimal!
 
   # populated from the Burn event
-  sender: Bytes
+  sender: Bytes!
   amount0: BigDecimal
   amount1: BigDecimal
   to: Bytes

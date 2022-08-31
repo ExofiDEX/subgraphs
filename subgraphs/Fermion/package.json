@@ -6,7 +6,7 @@
     "codegen": "mustache ../../config/$NETWORK.js template.yaml > subgraph.yaml && mustache ../../config/$NETWORK.js src/constants/index.template.ts > src/constants/index.ts && graph codegen",
     "build": "graph build",
     "test": "graph test -r",
-    "deploy": "graph deploy --node https://api.thegraph.com/deploy/ ExofiDEX/Fermion",
+    "deploy:goerli": "graph deploy --node https://api.thegraph.com/deploy/ ExofiDEX/Fermion",
     "create-local": "graph create --node http://localhost:8020/ ExofiDEX/Fermion",
     "remove-local": "graph remove --node http://localhost:8020/ ExofiDEX/Fermion",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ExofiDEX/Fermion"

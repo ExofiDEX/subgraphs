@@ -162,7 +162,7 @@ export function getDecimals(address: Address): BigInt {
   const contract = ERC20.bind(address)
 
   // try types uint8 for decimals
-  let decimalValue: number
+  let decimalValue: number = 0;
 
   const decimalResult = contract.try_decimals()
 

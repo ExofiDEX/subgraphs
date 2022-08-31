@@ -421,7 +421,7 @@ export function onMint(event: MintEvent): void {
   mint.save()
 
   // create liquidity position
-  const liquidityPosition = createLiquidityPosition(mint.to as Address, event.address, event.block)
+  const liquidityPosition = createLiquidityPosition(Address.fromBytes(mint.to), event.address, event.block)
 
   // create liquidity position snapshot
   createLiquidityPositionSnapshot(liquidityPosition, event.block)
@@ -516,7 +516,7 @@ export function onBurn(event: BurnEvent): void {
   burn.save()
 
   // update the LP position
-  const liquidityPosition = createLiquidityPosition(burn.sender as Address, event.address, event.block)
+  const liquidityPosition = createLiquidityPosition(Address.fromBytes(burn.sender), event.address, event.block)
   createLiquidityPositionSnapshot(liquidityPosition, event.block)
 
   // update day data
