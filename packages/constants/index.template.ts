@@ -30,67 +30,67 @@ export const LOCKUP_BLOCK_NUMBER = BigInt.fromI32(10959148)
 
 export const MASTER_CHEF_START_BLOCK = BigInt.fromI32(10750000)
 
-export const UNISWAP_SUSHI_ETH_PAIR_FIRST_LIQUDITY_BLOCK = BigInt.fromI32(10750005)
+// export const UNISWAP_SUSHI_ETH_PAIR_FIRST_LIQUDITY_BLOCK = BigInt.fromI32(10750005)
 
-export const ACC_SUSHI_PRECISION = BigInt.fromString('1000000000000')
+export const ACC_FERMION_PRECISION = BigInt.fromString('1000000000000')
 
-export const BENTOBOX_DEPOSIT = 'deposit'
+// export const BENTOBOX_DEPOSIT = 'deposit'
 
-export const BENTOBOX_TRANSFER = 'transfer'
+// export const BENTOBOX_TRANSFER = 'transfer'
 
-export const BENTOBOX_WITHDRAW = 'withdraw'
+// export const BENTOBOX_WITHDRAW = 'withdraw'
 
-export const KASHI_PAIR_MEDIUM_RISK_TYPE = 'medium'
+// export const KASHI_PAIR_MEDIUM_RISK_TYPE = 'medium'
 
-export const PAIR_ADD_COLLATERAL = 'addCollateral'
+// export const PAIR_ADD_COLLATERAL = 'addCollateral'
 
-export const PAIR_REMOVE_COLLATERAL = 'removeCollateral'
+// export const PAIR_REMOVE_COLLATERAL = 'removeCollateral'
 
-export const PAIR_ADD_ASSET = 'addAsset'
+// export const PAIR_ADD_ASSET = 'addAsset'
 
-export const PAIR_REMOVE_ASSET = 'removeAsset'
+// export const PAIR_REMOVE_ASSET = 'removeAsset'
 
-export const PAIR_BORROW = 'borrow'
+// export const PAIR_BORROW = 'borrow'
 
-export const PAIR_REPAY = 'repay'
+// export const PAIR_REPAY = 'repay'
 
 export const FACTORY_ADDRESS = Address.fromString(
-  '{{ factory_address }}{{^factory_address}}0x0000000000000000000000000000000000000000{{/factory_address}}'
+  '{{ factory.address }}{{^factory.address}}0x0000000000000000000000000000000000000000{{/factory.address}}'
 )
 
-export const MASTER_CHEF_ADDRESS = Address.fromString(
-  '{{ masterchef_address }}{{^masterchef_address}}0x0000000000000000000000000000000000000000{{/masterchef_address}}'
+export const MAGNETIC_FIELD_GENERATOR_ADDRESS = Address.fromString(
+  '{{ magneticFieldGenerator.address }}{{^magneticFieldGenerator.address}}0x0000000000000000000000000000000000000000{{/magneticFieldGenerator.address}}'
 )
 
-export const MASTER_CHEF_V2_ADDRESS = Address.fromString('0xef0881ec094552b2e128cf945ef17a6752b4ec5d')
+// export const MASTER_CHEF_V2_ADDRESS = Address.fromString('{{ magneticFieldGenerator.address }}{{^magneticFieldGenerator.address}}0x0000000000000000000000000000000000000000{{/magneticFieldGenerator.address}}')
 
-export const SUSHI_BAR_ADDRESS = Address.fromString(
-  '{{ sushi_bar_address }}{{^sushi_bar_address}}0x0000000000000000000000000000000000000000{{/sushi_bar_address}}'
+// export const SUSHI_BAR_ADDRESS = Address.fromString(
+//   '{{ sushi_bar_address }}{{^sushi_bar_address}}0x0000000000000000000000000000000000000000{{/sushi_bar_address}}'
+// )
+
+// export const SUSHI_MAKER_ADDRESS = Address.fromString(
+//   '{{ sushi_maker_address }}{{^sushi_maker_address}}0x0000000000000000000000000000000000000000{{/sushi_maker_address}}'
+// )
+
+export const FERMION_TOKEN_ADDRESS = Address.fromString(
+  '{{ fermion.address }}{{^fermion.address}}0x0000000000000000000000000000000000000000{{/fermion.address}}'
 )
 
-export const SUSHI_MAKER_ADDRESS = Address.fromString(
-  '{{ sushi_maker_address }}{{^sushi_maker_address}}0x0000000000000000000000000000000000000000{{/sushi_maker_address}}'
-)
+// export const FERMION_USDT_PAIR_ADDRESS = Address.fromString(
+//   '{{ fermion_usdt_pair_address }}{{^fermion_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/fermion_usdt_pair_address}}'
+// )
 
-export const SUSHI_TOKEN_ADDRESS = Address.fromString(
-  '{{ sushi_address }}{{^sushi_address}}0x0000000000000000000000000000000000000000{{/sushi_address}}'
-)
+// export const XSUSHI_USDC_PAIR_ADDRESS = Address.fromString(
+//   '{{ xsushi_usdc_pair_address }}{{^xsushi_usdc_pair_address}}0x0000000000000000000000000000000000000000{{/xsushi_usdc_pair_address}}'
+// )
 
-export const SUSHI_USDT_PAIR_ADDRESS = Address.fromString(
-  '{{ sushi_usdt_pair_address }}{{^sushi_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/sushi_usdt_pair_address}}'
-)
+// export const XSUSHI_WETH_PAIR_ADDRESS = Address.fromString(
+//   '{{ xsushi_weth_pair_address }}{{^xsushi_weth_pair_address}}0x0000000000000000000000000000000000000000{{/xsushi_weth_pair_address}}'
+// )
 
-export const XSUSHI_USDC_PAIR_ADDRESS = Address.fromString(
-  '{{ xsushi_usdc_pair_address }}{{^xsushi_usdc_pair_address}}0x0000000000000000000000000000000000000000{{/xsushi_usdc_pair_address}}'
-)
-
-export const XSUSHI_WETH_PAIR_ADDRESS = Address.fromString(
-  '{{ xsushi_weth_pair_address }}{{^xsushi_weth_pair_address}}0x0000000000000000000000000000000000000000{{/xsushi_weth_pair_address}}'
-)
-
-export const SUSHI_DISTRIBUTOR_ADDRESS = Address.fromString(
-  '{{ sushi_distributor_address }}{{^sushi_distributor_address}}0x0000000000000000000000000000000000000000{{/sushi_distributor_address}}'
-)
+// export const FERMION_DISTRIBUTOR_ADDRESS = Address.fromString(
+//   '{{ fermion_distributor_address }}{{^fermion_distributor_address}}0x0000000000000000000000000000000000000000{{/fermion_distributor_address}}'
+// )
 
 export const USDC_WETH_PAIR =
   '{{ usdc_weth_pair }}{{^usdc_weth_pair}}0x0000000000000000000000000000000000000000{{/usdc_weth_pair}}'
@@ -101,8 +101,8 @@ export const DAI_WETH_PAIR =
 export const USDT_WETH_PAIR =
   '{{ usdt_weth_pair }}{{^usdt_weth_pair}}0x0000000000000000000000000000000000000000{{/usdt_weth_pair}}'
 
-export const SUSHI_USDT_PAIR =
-  '{{ sushi_usdt_pair }}{{^sushi_usdt_pair}}0x0000000000000000000000000000000000000000{{/sushi_usdt_pair}}'
+// export const FERMION_USDT_PAIR =
+//   '{{ fermion_usdt_pair }}{{^fermion_usdt_pair}}0x0000000000000000000000000000000000000000{{/fermion_usdt_pair}}'
 
 // minimum liquidity required to count towards tracked volume for pairs with small # of Lps
 export const MINIMUM_USD_THRESHOLD_NEW_PAIRS = BigDecimal.fromString(
@@ -118,63 +118,63 @@ export const WETH_ADDRESS = Address.fromString(
   '{{ weth_address }}{{^weth_address}}0x0000000000000000000000000000000000000000{{/weth_address}}'
 )
 
-export const SUSHISWAP_WETH_USDT_PAIR_ADDRESS = Address.fromString(
-  '{{ sushiswap_weth_usdt_pair_address }}{{^sushiswap_weth_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/sushiswap_weth_usdt_pair_address}}'
-)
+// export const SUSHISWAP_WETH_USDT_PAIR_ADDRESS = Address.fromString(
+//   '{{ sushiswap_weth_usdt_pair_address }}{{^sushiswap_weth_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/sushiswap_weth_usdt_pair_address}}'
+// )
 
-export const STABLE_WNATIVE_PAIR =
-  '{{ stable_wnative_pair }}{{^stable_wnative_pair}}0x0000000000000000000000000000000000000000{{/stable_wnative_pair}}'
+// export const STABLE_WNATIVE_PAIR =
+//   '{{ stable_wnative_pair }}{{^stable_wnative_pair}}0x0000000000000000000000000000000000000000{{/stable_wnative_pair}}'
 
-export const STABLE_ADDRESS = Address.fromString(
-  '{{ stable_address }}{{^stable_address}}0x0000000000000000000000000000000000000000{{/stable_address}}'
-)
+// export const STABLE_ADDRESS = Address.fromString(
+//   '{{ stable_address }}{{^stable_address}}0x0000000000000000000000000000000000000000{{/stable_address}}'
+// )
 
 export const USDT_ADDRESS = Address.fromString(
   '{{ usdt_address }}{{^usdt_address}}0x0000000000000000000000000000000000000000{{/usdt_address}}'
 )
 
-export const UNISWAP_FACTORY_ADDRESS = Address.fromString(
-  '{{ uniswap_factory_address }}{{^uniswap_factory_address}}0x0000000000000000000000000000000000000000{{/uniswap_factory_address}}'
-)
+// export const UNISWAP_FACTORY_ADDRESS = Address.fromString(
+//   '{{ uniswap_factory_address }}{{^uniswap_factory_address}}0x0000000000000000000000000000000000000000{{/uniswap_factory_address}}'
+// )
 
-export const UNISWAP_WETH_USDT_PAIR_ADDRESS = Address.fromString(
-  '{{ uniswap_weth_usdt_pair_address }}{{^uniswap_weth_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_weth_usdt_pair_address}}'
-)
+// export const UNISWAP_WETH_USDT_PAIR_ADDRESS = Address.fromString(
+//   '{{ uniswap_weth_usdt_pair_address }}{{^uniswap_weth_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_weth_usdt_pair_address}}'
+// )
 
-export const UNISWAP_SUSHI_ETH_PAIR_ADDRESS = Address.fromString(
-  '{{ uniswap_sushi_eth_pair_address }}{{^uniswap_sushi_eth_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_sushi_eth_pair_address}}'
-)
+// export const UNISWAP_SUSHI_ETH_PAIR_ADDRESS = Address.fromString(
+//   '{{ uniswap_sushi_eth_pair_address }}{{^uniswap_sushi_eth_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_sushi_eth_pair_address}}'
+// )
 
-export const UNISWAP_SUSHI_USDT_PAIR_ADDRESS = Address.fromString(
-  '{{ uniswap_sushi_usdt_pair_address }}{{^uniswap_sushi_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_sushi_usdt_pair_address}}'
-)
+// export const UNISWAP_SUSHI_USDT_PAIR_ADDRESS = Address.fromString(
+//   '{{ uniswap_sushi_usdt_pair_address }}{{^uniswap_sushi_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_sushi_usdt_pair_address}}'
+// )
 
 // Bentobox constants
-export const BENTOBOX_ADDRESS = Address.fromString(
-  '{{ bentobox_address }}{{^bentobox_address}}0x0000000000000000000000000000000000000000{{/bentobox_address}}'
-)
+// export const BENTOBOX_ADDRESS = Address.fromString(
+//   '{{ bentobox_address }}{{^bentobox_address}}0x0000000000000000000000000000000000000000{{/bentobox_address}}'
+// )
 
-export const KASHI_PAIR_MEDIUM_RISK_MASTER_ADDRESS = Address.fromString(
-  '{{ kashi_pair_medium_risk_master_address }}{{^kashi_pair_medium_risk_master_address}}0x0000000000000000000000000000000000000000{{/kashi_pair_medium_risk_master_address}}'
-)
+// export const KASHI_PAIR_MEDIUM_RISK_MASTER_ADDRESS = Address.fromString(
+//   '{{ kashi_pair_medium_risk_master_address }}{{^kashi_pair_medium_risk_master_address}}0x0000000000000000000000000000000000000000{{/kashi_pair_medium_risk_master_address}}'
+// )
 
 // MiniChef
-export const MINI_CHEF_ADDRESS = Address.fromString(
-  '{{ minichef_address }}{{^minichef_address}}0x0000000000000000000000000000000000000000{{/minichef_address}}'
-)
+// export const MINI_CHEF_ADDRESS = Address.fromString(
+//   '{{ minichef_address }}{{^minichef_address}}0x0000000000000000000000000000000000000000{{/minichef_address}}'
+// )
 
-export const COMPLEX_REWARDER = Address.fromString(
-  '{{ complex_rewarder_address }}{{^complex_rewarder_address}}0x0000000000000000000000000000000000000000{{/complex_rewarder_address}}'
-)
+// export const COMPLEX_REWARDER = Address.fromString(
+//   '{{ complex_rewarder_address }}{{^complex_rewarder_address}}0x0000000000000000000000000000000000000000{{/complex_rewarder_address}}'
+// )
 
-export const CONVEX_REWARDERS: Array<Address> = [
-  Address.fromString('0x9e01aac4b3e8781a85b21d9d9f848e72af77b362'),
-  Address.fromString('0x1fd97b5e5a257b0b9b9a42a96bb8870cbdd1eb79'),
-]
+// export const CONVEX_REWARDERS: Array<Address> = [
+//   Address.fromString('0x9e01aac4b3e8781a85b21d9d9f848e72af77b362'),
+//   Address.fromString('0x1fd97b5e5a257b0b9b9a42a96bb8870cbdd1eb79'),
+// ]
 
-export const ALCX_REWARDER = Address.fromString('0x7519c93fc5073e15d89131fd38118d73a72370f8')
+// export const ALCX_REWARDER = Address.fromString('0x7519c93fc5073e15d89131fd38118d73a72370f8')
 
-export const LIDO_REWARDER = Address.fromString('0x75ff3dd673ef9fc459a52e1054db5df2a1101212')
+// export const LIDO_REWARDER = Address.fromString('0x75ff3dd673ef9fc459a52e1054db5df2a1101212')
 
 export const NATIVE = Address.fromString(
   '{{ native_address }}{{^native_address}}0x0000000000000000000000000000000000000000{{/native_address}}'
