@@ -51,17 +51,17 @@ export function getTrackedVolumeUSD(
   if (pair.liquidityProviderCount.lt(BigInt.fromI32(5))) {
     const reserve0USD = pair.reserve0.times(price0)
     const reserve1USD = pair.reserve1.times(price1)
-    if (WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
+    if (WHITELIST.includes(Address.fromString(token0.id)) && WHITELIST.includes(Address.fromString(token1.id))) {
       if (reserve0USD.plus(reserve1USD).lt(MINIMUM_USD_THRESHOLD_NEW_PAIRS)) {
         return BIG_DECIMAL_ZERO
       }
     }
-    if (WHITELIST.includes(token0.id) && !WHITELIST.includes(token1.id)) {
+    if (WHITELIST.includes(Address.fromString(token0.id)) && !WHITELIST.includes(Address.fromString(token1.id))) {
       if (reserve0USD.times(BigDecimal.fromString('2')).lt(MINIMUM_USD_THRESHOLD_NEW_PAIRS)) {
         return BIG_DECIMAL_ZERO
       }
     }
-    if (!WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
+    if (!WHITELIST.includes(Address.fromString(token0.id)) && WHITELIST.includes(Address.fromString(token1.id))) {
       if (reserve1USD.times(BigDecimal.fromString('2')).lt(MINIMUM_USD_THRESHOLD_NEW_PAIRS)) {
         return BIG_DECIMAL_ZERO
       }
@@ -69,17 +69,17 @@ export function getTrackedVolumeUSD(
   }
 
   // both are whitelist tokens, take average of both amounts
-  if (WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
+  if (WHITELIST.includes(Address.fromString(token0.id)) && WHITELIST.includes(Address.fromString(token1.id))) {
     return tokenAmount0.times(price0).plus(tokenAmount1.times(price1)).div(BigDecimal.fromString('2'))
   }
 
   // take full value of the whitelisted token amount
-  if (WHITELIST.includes(token0.id) && !WHITELIST.includes(token1.id)) {
+  if (WHITELIST.includes(Address.fromString(token0.id)) && !WHITELIST.includes(Address.fromString(token1.id))) {
     return tokenAmount0.times(price0)
   }
 
   // take full value of the whitelisted token amount
-  if (!WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
+  if (!WHITELIST.includes(Address.fromString(token0.id)) && WHITELIST.includes(Address.fromString(token1.id))) {
     return tokenAmount1.times(price1)
   }
 
@@ -106,17 +106,17 @@ export function getTrackedLiquidityUSD(
   const network = dataSource.network()
 
   // both are whitelist tokens, take average of both amounts
-  if (WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
+  if (WHITELIST.includes(Address.fromString(token0.id)) && WHITELIST.includes(Address.fromString(token1.id))) {
     return tokenAmount0.times(price0).plus(tokenAmount1.times(price1))
   }
 
   // take double value of the whitelisted token amount
-  if (WHITELIST.includes(token0.id) && !WHITELIST.includes(token1.id)) {
+  if (WHITELIST.includes(Address.fromString(token0.id)) && !WHITELIST.includes(Address.fromString(token1.id))) {
     return tokenAmount0.times(price0).times(BigDecimal.fromString('2'))
   }
 
   // take double value of the whitelisted token amount
-  if (!WHITELIST.includes(token0.id) && WHITELIST.includes(token1.id)) {
+  if (!WHITELIST.includes(Address.fromString(token0.id)) && WHITELIST.includes(Address.fromString(token1.id))) {
     return tokenAmount1.times(price1).times(BigDecimal.fromString('2'))
   }
 

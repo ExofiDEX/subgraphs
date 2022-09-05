@@ -92,14 +92,17 @@ export const FERMION_TOKEN_ADDRESS = Address.fromString(
 //   '{{ fermion_distributor_address }}{{^fermion_distributor_address}}0x0000000000000000000000000000000000000000{{/fermion_distributor_address}}'
 // )
 
-export const USDC_WETH_PAIR =
+export const USDC_WETH_PAIR = Address.fromString(
   '{{ usdc_weth_pair }}{{^usdc_weth_pair}}0x0000000000000000000000000000000000000000{{/usdc_weth_pair}}'
+)
 
-export const DAI_WETH_PAIR =
+export const DAI_WETH_PAIR = Address.fromString(
   '{{ dai_weth_pair }}{{^dai_weth_pair}}0x0000000000000000000000000000000000000000{{/dai_weth_pair}}'
+)
 
-export const USDT_WETH_PAIR =
+export const USDT_WETH_PAIR = Address.fromString(
   '{{ usdt_weth_pair }}{{^usdt_weth_pair}}0x0000000000000000000000000000000000000000{{/usdt_weth_pair}}'
+)
 
 // export const FERMION_USDT_PAIR =
 //   '{{ fermion_usdt_pair }}{{^fermion_usdt_pair}}0x0000000000000000000000000000000000000000{{/fermion_usdt_pair}}'
@@ -118,75 +121,24 @@ export const WETH_ADDRESS = Address.fromString(
   '{{ weth_address }}{{^weth_address}}0x0000000000000000000000000000000000000000{{/weth_address}}'
 )
 
-// export const SUSHISWAP_WETH_USDT_PAIR_ADDRESS = Address.fromString(
-//   '{{ sushiswap_weth_usdt_pair_address }}{{^sushiswap_weth_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/sushiswap_weth_usdt_pair_address}}'
-// )
-
-// export const STABLE_WNATIVE_PAIR =
-//   '{{ stable_wnative_pair }}{{^stable_wnative_pair}}0x0000000000000000000000000000000000000000{{/stable_wnative_pair}}'
-
-// export const STABLE_ADDRESS = Address.fromString(
-//   '{{ stable_address }}{{^stable_address}}0x0000000000000000000000000000000000000000{{/stable_address}}'
-// )
-
 export const USDT_ADDRESS = Address.fromString(
   '{{ usdt_address }}{{^usdt_address}}0x0000000000000000000000000000000000000000{{/usdt_address}}'
 )
 
-// export const UNISWAP_FACTORY_ADDRESS = Address.fromString(
-//   '{{ uniswap_factory_address }}{{^uniswap_factory_address}}0x0000000000000000000000000000000000000000{{/uniswap_factory_address}}'
-// )
+export const USDC_ADDRESS = Address.fromString(
+  '{{ usdc_address }}{{^usdc_address}}0x0000000000000000000000000000000000000000{{/usdc_address}}'
+)
 
-// export const UNISWAP_WETH_USDT_PAIR_ADDRESS = Address.fromString(
-//   '{{ uniswap_weth_usdt_pair_address }}{{^uniswap_weth_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_weth_usdt_pair_address}}'
-// )
+export const DAI_ADDRESS = Address.fromString(
+  '{{ dai_address }}{{^dai_address}}0x0000000000000000000000000000000000000000{{/dai_address}}'
+)
 
-// export const UNISWAP_SUSHI_ETH_PAIR_ADDRESS = Address.fromString(
-//   '{{ uniswap_sushi_eth_pair_address }}{{^uniswap_sushi_eth_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_sushi_eth_pair_address}}'
-// )
-
-// export const UNISWAP_SUSHI_USDT_PAIR_ADDRESS = Address.fromString(
-//   '{{ uniswap_sushi_usdt_pair_address }}{{^uniswap_sushi_usdt_pair_address}}0x0000000000000000000000000000000000000000{{/uniswap_sushi_usdt_pair_address}}'
-// )
-
-// Bentobox constants
-// export const BENTOBOX_ADDRESS = Address.fromString(
-//   '{{ bentobox_address }}{{^bentobox_address}}0x0000000000000000000000000000000000000000{{/bentobox_address}}'
-// )
-
-// export const KASHI_PAIR_MEDIUM_RISK_MASTER_ADDRESS = Address.fromString(
-//   '{{ kashi_pair_medium_risk_master_address }}{{^kashi_pair_medium_risk_master_address}}0x0000000000000000000000000000000000000000{{/kashi_pair_medium_risk_master_address}}'
-// )
-
-// MiniChef
-// export const MINI_CHEF_ADDRESS = Address.fromString(
-//   '{{ minichef_address }}{{^minichef_address}}0x0000000000000000000000000000000000000000{{/minichef_address}}'
-// )
-
-// export const COMPLEX_REWARDER = Address.fromString(
-//   '{{ complex_rewarder_address }}{{^complex_rewarder_address}}0x0000000000000000000000000000000000000000{{/complex_rewarder_address}}'
-// )
-
-// export const CONVEX_REWARDERS: Array<Address> = [
-//   Address.fromString('0x9e01aac4b3e8781a85b21d9d9f848e72af77b362'),
-//   Address.fromString('0x1fd97b5e5a257b0b9b9a42a96bb8870cbdd1eb79'),
-// ]
-
-// export const ALCX_REWARDER = Address.fromString('0x7519c93fc5073e15d89131fd38118d73a72370f8')
-
-// export const LIDO_REWARDER = Address.fromString('0x75ff3dd673ef9fc459a52e1054db5df2a1101212')
-
-export const NATIVE = Address.fromString(
+export const NATIVE_ADDRESS = Address.fromString(
   '{{ native_address }}{{^native_address}}0x0000000000000000000000000000000000000000{{/native_address}}'
 )
 
-export const USDC = '{{ usdc_address }}{{^usdc_address}}0x0000000000000000000000000000000000000000{{/usdc_address}}'
-
-export const USDT = '{{ usdt_address }}{{^usdt_address}}0x0000000000000000000000000000000000000000{{/usdt_address}}'
-
-export const DAI = '{{ dai_address }}{{^dai_address}}0x0000000000000000000000000000000000000000{{/dai_address}}'
-
-export const WHITELIST: string[] = '{{ whitelist }}'.split(',')
+// TODO: REplace with typesafe variant
+export const WHITELIST: Address[] = '{{ whitelist }}'.split(',').map<Address>(x => Address.fromString(x))
 
 // export const WHITELIST: string[] = [
 //   "0xcf664087a5bb0237a0bad6742852ec6c8d69a27a",

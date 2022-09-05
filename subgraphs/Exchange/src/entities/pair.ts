@@ -32,12 +32,12 @@ export function getPair(
 
     pair = new Pair(address.toHex())
 
-    if (WHITELIST.includes(token0.id)) {
+    if (WHITELIST.includes(Address.fromString(token0.id))) {
       const newPairs = token1.whitelistPairs
       newPairs.push(pair.id)
       token1.whitelistPairs = newPairs
     }
-    if (WHITELIST.includes(token1.id)) {
+    if (WHITELIST.includes(Address.fromString(token1.id))) {
       const newPairs = token0.whitelistPairs
       newPairs.push(pair.id)
       token0.whitelistPairs = newPairs

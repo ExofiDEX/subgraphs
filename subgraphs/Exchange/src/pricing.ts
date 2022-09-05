@@ -1,14 +1,14 @@
 import {
   BIG_DECIMAL_ONE,
   BIG_DECIMAL_ZERO,
-  DAI,
+  DAI_ADDRESS,
   DAI_WETH_PAIR,
   FACTORY_ADDRESS,
   MINIMUM_LIQUIDITY_THRESHOLD_ETH,
-  NATIVE,
-  USDC,
+  NATIVE_ADDRESS,
+  USDC_ADDRESS,
   USDC_WETH_PAIR,
-  USDT,
+  USDT_ADDRESS,
   USDT_WETH_PAIR,
 } from 'const'
 import { Address, BigDecimal, BigInt, dataSource, ethereum, log } from '@graphprotocol/graph-ts'
@@ -21,9 +21,10 @@ export const factoryContract = FactoryContract.bind(FACTORY_ADDRESS)
 
 export function getEthPrice(block: ethereum.Block | null = null): BigDecimal {
   // fetch eth prices for each stablecoin
-  const daiPair = Pair.load(DAI_WETH_PAIR)
-  const usdcPair = Pair.load(USDC_WETH_PAIR)
-  const usdtPair = Pair.load(USDT_WETH_PAIR)
+  
+  const daiPair = Pair.load(DAI_WETH_PAIR.toHex())
+  const usdcPair = Pair.load(USDC_WETH_PAIR.toHex())
+  const usdtPair = Pair.load(USDT_WETH_PAIR.toHex())
 
   if (
     daiPair !== null &&
@@ -33,14 +34,12 @@ export function getEthPrice(block: ethereum.Block | null = null): BigDecimal {
     usdtPair !== null &&
     usdtPair.reserveETH.gt(MINIMUM_LIQUIDITY_THRESHOLD_ETH)
   ) {
-    const isDaiFirst = daiPair.token0 == DAI
-    const isUsdcFirst = usdcPair.token0 == USDC
-    const isUsdtFirst = usdtPair.token0 == USDT
+    const isDaiFirst = Address.fromString(daiPair.token0) == DAI_ADDRESS
+    const isUsdcFirst = Address.fromString(usdcPair.token0) == USDC_ADDRESS
+    const isUsdtFirst = Address.fromString(usdtPair.token0) == USDT_ADDRESS
 
     const daiPairEth = isDaiFirst ? daiPair.reserve1 : daiPair.reserve0
-
     const usdcPairEth = isUsdcFirst ? usdcPair.reserve1 : usdcPair.reserve0
-
     const usdtPairEth = isUsdtFirst ? usdtPair.reserve1 : usdtPair.reserve0
 
     const totalLiquidityETH = daiPairEth.plus(usdcPairEth).plus(usdtPairEth)
@@ -70,8 +69,8 @@ export function getEthPrice(block: ethereum.Block | null = null): BigDecimal {
     usdcPair !== null &&
     usdcPair.reserveETH.gt(MINIMUM_LIQUIDITY_THRESHOLD_ETH)
   ) {
-    const isDaiFirst = daiPair.token0 == DAI
-    const isUsdcFirst = usdcPair.token0 == USDC
+    const isDaiFirst = Address.fromString(daiPair.token0) == DAI_ADDRESS
+    const isUsdcFirst = Address.fromString(usdcPair.token0) == USDC_ADDRESS
 
     const daiPairEth = isDaiFirst ? daiPair.reserve1 : daiPair.reserve0
 
@@ -92,13 +91,13 @@ export function getEthPrice(block: ethereum.Block | null = null): BigDecimal {
     return daiPrice.times(daiWeight).plus(usdcPrice.times(usdcWeight))
     // USDC is the only pair so far
   } else if (usdcPair !== null && usdcPair.reserveETH.gt(MINIMUM_LIQUIDITY_THRESHOLD_ETH)) {
-    const isUsdcFirst = usdcPair.token0 == USDC
+    const isUsdcFirst = Address.fromString(usdcPair.token0) == USDC_ADDRESS
     return isUsdcFirst ? usdcPair.token0Price : usdcPair.token1Price
   } else if (usdtPair !== null && usdtPair.reserveETH.gt(MINIMUM_LIQUIDITY_THRESHOLD_ETH)) {
-    const isUsdtFirst = usdtPair.token0 == USDT
+    const isUsdtFirst = Address.fromString(usdtPair.token0) == USDT_ADDRESS
     return isUsdtFirst ? usdtPair.token0Price : usdtPair.token1Price
   } else if (daiPair !== null && daiPair.reserveETH.gt(MINIMUM_LIQUIDITY_THRESHOLD_ETH)) {
-    const isDaiFirst = daiPair.token0 == DAI
+    const isDaiFirst = Address.fromString(daiPair.token0) == DAI_ADDRESS
     return isDaiFirst ? daiPair.token0Price : daiPair.token1Price
   } else {
     log.warning('No eth pair...', [])
@@ -107,7 +106,7 @@ export function getEthPrice(block: ethereum.Block | null = null): BigDecimal {
 }
 
 export function findEthPerToken(token: Token): BigDecimal {
-  if (Address.fromString(token.id) == NATIVE) {
+  if (Address.fromString(token.id) == NATIVE_ADDRESS) {
     return BIG_DECIMAL_ONE
   }
 

@@ -24,6 +24,7 @@ module.exports =
 	dai_address: "0xC10c9307022c8Ab914113b0d09e5d48E342dc80a",
 	weth_address: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
 	native_address: "0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6",
-	minimum_usd_threshold_new_pairs: "3000",
-	minimum_liquidity_threshold_eth: "3"
+	minimum_usd_threshold_new_pairs: "1",
+	minimum_liquidity_threshold_eth: "1",
+	whitelist: "0x7d5e85d281CE6E93C6D17b4887e58242A23703c3,0x3c8Bca4cEB2d32b7D49076688a06A635F84099e9,0xB4FBF271143F4FBf7B91A5ded31805e42b2208d6,0xC10c9307022c8Ab914113b0d09e5d48E342dc80a,0xE6E1aBcE0150fDb52d2fd84BcF354B9A2CC70E5e"
 }
