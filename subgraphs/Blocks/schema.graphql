@@ -1,16 +1,43 @@
-type Block @entity {
+# type Block @entity {
+#   id: ID!
+#   number: BigInt!
+#   timestamp: BigInt!
+#   parentHash: String
+#   author: String
+#   difficulty: BigInt
+#   totalDifficulty: BigInt
+#   gasUsed: BigInt
+#   gasLimit: BigInt
+#   receiptsRoot: String
+#   transactionsRoot: String
+#   stateRoot: String
+#   size: BigInt
+#   unclesHash: String
+# }
+
+type StatisticBlock @entity
+{
   id: ID!
-  number: BigInt!
-  timestamp: BigInt!
-  parentHash: String
-  author: String
-  difficulty: BigInt
-  totalDifficulty: BigInt
-  gasUsed: BigInt
-  gasLimit: BigInt
-  receiptsRoot: String
-  transactionsRoot: String
-  stateRoot: String
-  size: BigInt
-  unclesHash: String
+  lastBlockNumber: BigInt!
+  lastTimestamp: BigInt!
+  lastBlockTimeMs: BigInt!
+  minBlockTimeMs: BigInt!
+  maxBlockTimeMs: BigInt!
+  slidingBlockTimeMs: BigInt!
+  lastDifficulty: BigInt!
+  minDifficulty: BigInt!
+  maxDifficulty: BigInt!
+  slidingDifficulty: BigInt!
+  lastGasUsed: BigInt!
+  minGasUsed: BigInt!
+  maxGasUsed: BigInt!
+  slidingGasUsed: BigInt!
+  lastGasLimit: BigInt!
+  minGasLimit: BigInt!
+  maxGasLimit: BigInt!
+  slidingGasLimit: BigInt!
+  lastSize: BigInt!
+  minSize: BigInt!
+  maxSize: BigInt!
+  slidingSize: BigInt!
 }

@@ -9,7 +9,7 @@ dataSources:
     source:
       address: '{{ fermion.address }}'
       abi: Fermion
-      startBlock: {{ fermion.startBlock }}
+      startBlock: 0
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
