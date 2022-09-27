@@ -82,6 +82,12 @@ export function handleDeposit(event: Deposit): void {
   const user = getUser(event.params.to, event.params.pid, event.block)
 
   pool.slpBalance = pool.slpBalance.plus(event.params.amount)
+  if (!user.pool && event.params.amount.gt(BigInt.zero()))
+  {
+    user.pool = pool.id
+    pool.userCount = pool.userCount.plus(BigInt.fromU32(1))
+  }
+
   pool.save()
 
   user.amount = user.amount.plus(event.params.amount)
@@ -102,6 +108,11 @@ export function handleWithdraw(event: Withdraw): void {
   const user = getUser(event.params.user, event.params.pid, event.block)
 
   pool.slpBalance = pool.slpBalance.minus(event.params.amount)
+  if (user.amount.equals(BigInt.zero()))
+  {
+    user.pool = null
+    pool.userCount = pool.userCount.minus(BigInt.fromU32(1))
+  }
   pool.save()
 
   user.amount = user.amount.minus(event.params.amount)

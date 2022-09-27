@@ -6,13 +6,14 @@
     "codegen": "mustache ../../config/$NETWORK.js template.yaml > subgraph.yaml && mustache ../../config/$NETWORK.js src/constants/index.template.ts > src/constants/index.ts && graph codegen",
     "build": "graph build",
     "test": "graph test -r",
-    "deploy:goerli": "graph deploy --node https://api.thegraph.com/deploy/ ExofiDEX/Fermion",
-    "create-local": "graph create --node http://localhost:8020/ ExofiDEX/Fermion",
-    "remove-local": "graph remove --node http://localhost:8020/ ExofiDEX/Fermion",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ExofiDEX/Fermion"
+    "deploy:goerli": "graph deploy --node https://api.studio.thegraph.com/deploy/ fermion-goerli",
+    "create-local": "graph create --node http://localhost:8020/ fermion",
+    "remove-local": "graph remove --node http://localhost:8020/ fermion",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 fermion"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.32.0",
+    "@graphprotocol/graph-cli": "0.33.1",
     "@graphprotocol/graph-ts": "0.27.0"
-  }
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
 }

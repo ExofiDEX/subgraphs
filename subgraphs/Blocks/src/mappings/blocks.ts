@@ -9,8 +9,8 @@ import {
     StatisticBlock
 } from "../../generated/schema"
 
-export function handleBlock(block: ethereum.Block): void {
-
+export function handleBlock(block: ethereum.Block): void
+{
     let sb = StatisticBlock.load("Summary");
     if (sb === null)
     {
@@ -66,16 +66,16 @@ export function handleBlock(block: ethereum.Block): void {
             sb.slidingBlockTimeMs = sb.lastBlockTimeMs;
             sb.minDifficulty = min(first.lastDifficulty, second.lastDifficulty);
             sb.maxDifficulty = max(first.lastDifficulty, second.lastDifficulty);
-            sb.slidingDifficulty = calculateSliding(sb.minDifficulty, sb.maxDifficulty);
+            sb.slidingDifficulty = calculateSliding(second.lastDifficulty, first.lastDifficulty, block.number, "Difficulty");
             sb.minGasUsed = min(first.lastGasUsed, second.lastGasUsed);
             sb.maxGasUsed = max(first.lastGasUsed, second.lastGasUsed);
-            sb.slidingGasUsed = calculateSliding(sb.minGasUsed, sb.maxGasUsed);
+            sb.slidingGasUsed = calculateSliding(second.lastGasUsed, first.lastGasUsed, block.number, "Gas used");
             sb.minGasLimit = min(first.lastGasLimit, second.lastGasLimit);
             sb.maxGasLimit = max(first.lastGasLimit, second.lastGasLimit);
-            sb.slidingGasLimit = calculateSliding(sb.minGasLimit, sb.maxGasLimit);
+            sb.slidingGasLimit = calculateSliding(second.lastGasLimit, first.lastGasLimit, block.number, "Gas limit");
             sb.minSize = min(first.lastSize, second.lastSize);
             sb.maxSize = max(first.lastSize, second.lastSize);
-            sb.slidingSize = calculateSliding(sb.minSize, sb.maxSize);
+            sb.slidingSize = calculateSliding(second.lastSize, first.lastSize, block.number, "Block size");
             sb.save();
             store.remove("StatisticBlock", "First");
             store.remove("StatisticBlock", "Second");
@@ -87,29 +87,48 @@ export function handleBlock(block: ethereum.Block): void {
         sb.minBlockTimeMs = min(sb.lastBlockTimeMs, sb.minBlockTimeMs);
         sb.maxBlockTimeMs = max(sb.lastBlockTimeMs, sb.maxBlockTimeMs);
         sb = lastBlock(sb, block); // Set last Blocks here so that lastBlockTimeMs is calculated correctly.
-        sb.slidingBlockTimeMs = calculateSliding(sb.lastBlockTimeMs,sb.slidingBlockTimeMs);
+        sb.slidingBlockTimeMs = calculateSliding(sb.lastBlockTimeMs,sb.slidingBlockTimeMs, block.number, "Block time");
         sb.minDifficulty = min(block.difficulty, sb.minDifficulty);
         sb.maxDifficulty = max(block.difficulty, sb.maxDifficulty);
-        sb.slidingDifficulty = calculateSliding(block.difficulty, sb.slidingDifficulty);
+        sb.slidingDifficulty = calculateSliding(block.difficulty, sb.slidingDifficulty, block.number, "Difficulty");
         sb.minGasUsed = min(block.gasUsed, sb.minGasUsed);
         sb.maxGasUsed = max(block.gasUsed, sb.maxGasUsed);
-        sb.slidingGasUsed = calculateSliding(block.gasUsed, sb.slidingGasUsed);
+        sb.slidingGasUsed = calculateSliding(block.gasUsed, sb.slidingGasUsed, block.number, "Gas used");
         sb.minGasLimit = min(block.gasLimit, sb.minGasLimit);
         sb.maxGasLimit = max(block.gasLimit, sb.maxGasLimit);
-        sb.slidingGasLimit = calculateSliding(block.gasLimit, sb.slidingGasLimit);
+        sb.slidingGasLimit = calculateSliding(block.gasLimit, sb.slidingGasLimit, block.number, "Gas limit");
         // sb.lastSize is already set to current Size
         sb.minSize = min(sb.lastSize, sb.minSize);
         sb.maxSize = max(sb.lastSize, sb.maxSize);
-        sb.slidingSize = calculateSliding(sb.lastSize, sb.slidingSize);
+        sb.slidingSize = calculateSliding(sb.lastSize, sb.slidingSize, block.number, "Block size");
         sb.save();
     }
   }
 
-  function calculateSliding(oldValue: BigInt, newValue: BigInt): BigInt
+  function calculateSliding(newValue: BigInt, oldValue: BigInt, blockNumber: BigInt, scope: string): BigInt
   {
-    const nValue = newValue === BigInt.zero() ? BigInt.fromU32(1) : newValue;
-    const oValue = oldValue === BigInt.zero() ? BigInt.fromU32(1) : oldValue;
-    return oValue.times(nValue).sqrt(); // can never be 0;
+    log.info("calculateSliding({}) - Current Sliding: {}, New Input: {}, Block number: {}", [scope, oldValue.toString(), newValue.toString(), blockNumber.toString()]);
+    const newBlockCount = blockNumber.plus(BigInt.fromU32(1));
+    const avg = ((oldValue.times(blockNumber)).plus(newValue)).div(newBlockCount);
+    const nValue = newValue > BigInt.zero() ? newValue : BigInt.fromU32(1);
+    const oValue = oldValue > BigInt.zero() ? oldValue : BigInt.fromU32(1);
+    const mean = oValue.times(nValue).sqrt(); // can never be 0;
+    let res = avg.times(BigInt.fromU32(5)).plus(mean).div(BigInt.fromU32(6));
+    //Spezial case.
+    //If the difference between Mean and Sliding is so small that Mean can not adjust the value anymore move one step closer to the new value.
+    if(res == oldValue) // For some reason if check BigInt directly it never equals...
+    {
+      if(res < newValue)
+      {
+        res = res.plus(BigInt.fromU32(1));
+      }
+      else if(res > newValue)
+      {
+        res = res.minus(BigInt.fromU32(1));
+      }
+    }
+    log.debug("calculateSliding({}) - AVG: {} Mean: {} Sliding: {} nValue: {}, oValue: {}", [scope, avg.toString(), mean.toString(), res.toString(), nValue.toString(), oValue.toString()])
+    return res;
   }
 
   function min(a: BigInt, b: BigInt): BigInt

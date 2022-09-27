@@ -241,7 +241,8 @@
         "internalType": "contract IERC20",
         "name": "lpToken",
         "type": "address"
-      }
+      },
+      { "internalType": "uint256", "name": "lockPeriod", "type": "uint256" }
     ],
     "name": "add",
     "outputs": [],
@@ -391,9 +392,14 @@
             "internalType": "uint256",
             "name": "accFermionPerShare",
             "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "initialLock",
+            "type": "uint256"
           }
         ],
-        "internalType": "struct IMagneticFieldGenerator.PoolInfo",
+        "internalType": "struct PoolInfo",
         "name": "",
         "type": "tuple"
       }
@@ -428,12 +434,38 @@
   {
     "inputs": [
       {
+        "internalType": "uint256",
+        "name": "fermionPerBlock",
+        "type": "uint256"
+      }
+    ],
+    "name": "setFermionPerBlock",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "contract IMigratorDevice",
         "name": "migratorContract",
         "type": "address"
       }
     ],
     "name": "setMigrator",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "contract IMagneticFieldGeneratorStore",
+        "name": "storeContract",
+        "type": "address"
+      }
+    ],
+    "name": "setStore",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -492,9 +524,14 @@
             "internalType": "uint256",
             "name": "accFermionPerShare",
             "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "initialLock",
+            "type": "uint256"
           }
         ],
-        "internalType": "struct IMagneticFieldGenerator.PoolInfo",
+        "internalType": "struct PoolInfo",
         "name": "",
         "type": "tuple"
       }
@@ -514,7 +551,7 @@
           { "internalType": "uint256", "name": "amount", "type": "uint256" },
           { "internalType": "int256", "name": "rewardDebt", "type": "int256" }
         ],
-        "internalType": "struct IMagneticFieldGenerator.UserInfo",
+        "internalType": "struct UserInfo",
         "name": "",
         "type": "tuple"
       }

@@ -12,7 +12,6 @@ type Pool @entity {
   id: ID!
   magneticFieldGenerator: MagneticFieldGenerator!
   pair: Bytes!
-  # rewarder: Rewarder
   allocPoint: BigInt!
   lastRewardBlock: BigInt!
   accFermionPerShare: BigInt!
@@ -23,18 +22,10 @@ type Pool @entity {
   block: BigInt!
 }
 
-# type Rewarder @entity {
-#   id: ID!
-#   rewardToken: Bytes!
-#   rewardPerSecond: BigInt!
-#   timestamp: BigInt!
-#   block: BigInt!
-# }
-
 type User @entity {
   id: ID!
   address: Bytes!
-  pool: Pool!
+  pool: Pool
   amount: BigInt!
   rewardDebt: BigInt!
   fermionHarvested: BigInt!

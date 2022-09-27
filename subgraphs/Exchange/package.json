@@ -5,13 +5,14 @@
   "scripts": {
     "codegen": "mustache ../../config/$NETWORK.js template.yaml > subgraph.yaml && graph codegen",
     "build": "graph build",
-    "deploy:goerli": "graph deploy --node https://api.thegraph.com/deploy/ exofidex/exchange-goerli",
-    "create-local": "graph create --node http://localhost:8020/ ExofiDEX/Exchange",
-    "remove-local": "graph remove --node http://localhost:8020/ ExofiDEX/Exchange",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 ExofiDEX/Exchange"
+    "deploy:goerli": "graph deploy --node https://api.studio.thegraph.com/deploy/ exchange-goerli",
+    "create-local": "graph create --node http://localhost:8020/ exchange",
+    "remove-local": "graph remove --node http://localhost:8020/ exchange",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 exchange"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.32.0",
+    "@graphprotocol/graph-cli": "0.33.1",
     "@graphprotocol/graph-ts": "0.27.0"
-  }
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
 }
