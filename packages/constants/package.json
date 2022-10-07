@@ -1,12 +1,13 @@
 {
-  "name": "const",
+  "name": "@exoda/subgraphconst",
   "version": "1.0.0",
   "description": "Constants",
   "license": "MIT",
   "private": true,
   "main": "index.ts",
   "scripts": {
-    "codegen": "mustache ../../config/$NETWORK.js index.template.ts > index.ts && true",
+    "codegen:goerli": "mustache ../../config/goerli.js index.template.ts > index.ts",
+    "codegen:mainnet": "mustache ../../config/mainnet.js index.template.ts > index.ts",
     "build": "true"
   }
 }

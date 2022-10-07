@@ -8,7 +8,7 @@ import {
   LogUpdatePool
 } from '../../generated/MagneticFieldGenerator/MagneticFieldGenerator'
 import { Address, BigDecimal, BigInt, dataSource, ethereum, log } from '@graphprotocol/graph-ts'
-import { ACC_FERMION_PRECISION } from 'const'
+import { ACC_FERMION_PRECISION } from '../../../../packages/constants'
 import { MagneticFieldGenerator, Pool, User } from '../../generated/schema'
 import {
   getMagneticFieldGenerator,

@@ -10,7 +10,7 @@ import {
   USDC_WETH_PAIR,
   USDT_ADDRESS,
   USDT_WETH_PAIR,
-} from 'const'
+} from '../../../packages/constants'
 import { Address, BigDecimal, BigInt, dataSource, ethereum, log } from '@graphprotocol/graph-ts'
 import { Pair, Token } from '../generated/schema'
 

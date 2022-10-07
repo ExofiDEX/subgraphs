@@ -1,6 +1,6 @@
 import { getFactory, getPair } from '../entities'
 
-import { BIG_INT_ONE } from 'const'
+import { BIG_INT_ONE } from '../../../../packages/constants'
 import { PairCreated } from '../../generated/Factory/Factory'
 import { Pair as PairTemplate } from '../../generated/templates'
 
