@@ -1,0 +1,34 @@
+type MagneticFieldGenerator @entity {
+  id: ID!
+  totalAllocPoint: BigInt!
+  pools: [Pool!] @derivedFrom(field: "magneticFieldGenerator")
+  poolCount: BigInt!
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type Pool @entity {
+  # Index of pool in poolInfo on MagneticFieldGenerator contract
+  id: ID!
+  magneticFieldGenerator: MagneticFieldGenerator!
+  pair: Bytes!
+  allocPoint: BigInt!
+  lastRewardBlock: BigInt!
+  accFermionPerShare: BigInt!
+  slpBalance: BigInt!
+  users: [User!]! @derivedFrom(field: "pool")
+  userCount: BigInt!
+  timestamp: BigInt!
+  block: BigInt!
+}
+
+type User @entity {
+  id: ID!
+  address: Bytes!
+  pool: Pool
+  amount: BigInt!
+  rewardDebt: BigInt!
+  fermionHarvested: BigInt!
+  timestamp: BigInt!
+  block: BigInt!
+}

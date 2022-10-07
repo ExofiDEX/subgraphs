@@ -1,0 +1,20 @@
+{
+  "name": "@exoda/exchange",
+  "license": "MIT",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "graph build",
+    "codegen:goerli": "mustache ../../config/goerli.js template.yaml > subgraph.yaml && graph codegen",
+    "deploy:goerli": "graph deploy --node https://api.studio.thegraph.com/deploy/ exchange-goerli",
+    "codegen:mainnet": "mustache ../../config/mainnet.js template.yaml > subgraph.yaml && graph codegen",
+    "deploy:mainnet": "graph deploy --node https://api.studio.thegraph.com/deploy/ exchange",
+    "create-local": "graph create --node http://localhost:8020/ exchange",
+    "remove-local": "graph remove --node http://localhost:8020/ exchange",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 exchange"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.33.1",
+    "@graphprotocol/graph-ts": "0.27.0"
+  },
+  "devDependencies": { "matchstick-as": "0.5.0" }
+}
