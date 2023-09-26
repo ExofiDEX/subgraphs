@@ -8,13 +8,17 @@
     "deploy:goerli": "graph deploy --node https://api.studio.thegraph.com/deploy/ exchange-goerli",
     "codegen:mainnet": "mustache ../../config/mainnet.js template.yaml > subgraph.yaml && graph codegen",
     "deploy:mainnet": "graph deploy --node https://api.studio.thegraph.com/deploy/ exchange",
+    "codegen:base": "mustache ../../config/base.js template.yaml > subgraph.yaml && graph codegen",
+    "deploy:base": "graph deploy --node https://api.studio.thegraph.com/deploy/ exchange-base",
+    "codegen:base-testnet": "mustache ../../config/base-testnet.js template.yaml > subgraph.yaml && graph codegen",
+    "deploy:base-testnet": "graph deploy --node https://api.studio.thegraph.com/deploy/ exchange-base-testnet",
     "create-local": "graph create --node http://localhost:8020/ exchange",
     "remove-local": "graph remove --node http://localhost:8020/ exchange",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 exchange"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.33.1",
-    "@graphprotocol/graph-ts": "0.27.0"
+    "@graphprotocol/graph-cli": "^0.51.0",
+    "@graphprotocol/graph-ts": "^0.31.0"
   },
   "devDependencies": { "matchstick-as": "0.5.0" }
 }

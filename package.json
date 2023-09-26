@@ -1,5 +1,5 @@
 {
-  "name": "@sushiswap/subgraphs",
+  "name": "@exofi/subgraphs",
   "private": true,
   "workspaces": [
     "packages/*",
@@ -8,11 +8,13 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "codegen:goerli": "yarn workspaces run codegen:goerli",
+    "codegen:base-testnet": "yarn workspaces run codegen:base-testnet",
+    "codegen:base": "yarn workspaces run codegen:base",
     "codegen:mainnet": "yarn workspaces run codegen:mainnet"
   },
   "devDependencies": {
-    "@graphprotocol/graph-cli": "^0.32.0",
-    "@graphprotocol/graph-ts": "^0.27.0",
+    "@graphprotocol/graph-cli": "^0.51.0",
+    "@graphprotocol/graph-ts": "^0.31.0",
     "@sushiswap/core": "^1.4.2",
     "@sushiswap/prettier-config": "^0.1.0",
     "@typescript-eslint/eslint-plugin": "^5.30.6",

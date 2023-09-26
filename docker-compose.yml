@@ -1,8 +1,8 @@
 version: '3'
 services:
   gnode:
-    image: graphprotocol/graph-node:v0.24.1
-    container_name: gnode
+    image: graphprotocol/graph-node:v0.30.0
+    container_name: gnode-eth
     ports:
       # GraphQLServer: HTTP
       - '8000:8000'
@@ -24,16 +24,21 @@ services:
       postgres_db: graph-node
       ipfs: 'ipfs:5001'
       # Change next line if you want to connect to a different JSON-RPC endpoint
-      ethereum: 'fantom-testnet:https://rpcapi-tracing.testnet.fantom.network'
+      ethereum: 'mainnet:https://eth-mainnet.g.alchemy.com/v2/vnywCm2tU9nBnLtzKD5NXJr7coKvR6nO'
+      # ethereum: 'base-testnet:https://base-goerli.blockpi.network/v1/rpc/public'
+      # ethereum: 'arbitrum-one:https://arb1.arbitrum.io/rpc'
+      # ethereum: 'fantom-testnet:https://rpcapi-tracing.testnet.fantom.network'
       GRAPH_LOG: debug
   ipfs:
     image: ipfs/go-ipfs:v0.4.23
+    container_name: ipfs-eth
     ports:
       - '5001:5001'
     volumes:
       - ./data/ipfs:/data/ipfs
   postgres:
     image: postgres
+    container_name: postgres-eth
     ports:
       - '5432:5432'
     command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
@@ -41,5 +46,6 @@ services:
       POSTGRES_USER: graph-node
       POSTGRES_PASSWORD: let-me-in
       POSTGRES_DB: graph-node
+      POSTGRES_INITDB_ARGS: -E UTF8 --locale=C
     volumes:
       - ./data/postgres:/var/lib/postgresql/data

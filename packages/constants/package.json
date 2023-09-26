@@ -6,6 +6,8 @@
   "private": true,
   "main": "index.ts",
   "scripts": {
+    "codegen:base": "mustache ../../config/base.js index.template.ts > index.ts",
+    "codegen:base-testnet": "mustache ../../config/base-testnet.js index.template.ts > index.ts",
     "codegen:goerli": "mustache ../../config/goerli.js index.template.ts > index.ts",
     "codegen:mainnet": "mustache ../../config/mainnet.js index.template.ts > index.ts",
     "build": "true"
