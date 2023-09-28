@@ -3,6 +3,7 @@ services:
   gnode:
     image: graphprotocol/graph-node:v0.30.0
     container_name: gnode-eth
+    restart: always
     ports:
       # GraphQLServer: HTTP
       - '8000:8000'
@@ -32,6 +33,7 @@ services:
   ipfs:
     image: ipfs/go-ipfs:v0.4.23
     container_name: ipfs-eth
+    restart: always
     ports:
       - '5001:5001'
     volumes:
@@ -39,6 +41,7 @@ services:
   postgres:
     image: postgres
     container_name: postgres-eth
+    restart: always
     ports:
       - '5432:5432'
     command: ["postgres", "-cshared_preload_libraries=pg_stat_statements"]
